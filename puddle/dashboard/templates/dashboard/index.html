@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+
+{%block title%}Dashboard{%endblock%}
+{% block  content %}
+<!--content block div-->
+<div class = "mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">My items<hr class="mt-3"></h2>
+    <!-- Display items current user put up for sale -->
+    <div class = "grid grid-cols-3 gap-3">
+    {%for item in items%}
+        <div>
+            <a href="{% url 'item:detail' item.id %}">
+                <div> <img src="{{item.image.url}}" class = "rounded-xl"> </div>
+            </a>  
+    <!--Display name and price of item-->
+    <div class="p-6 bg-gray-200 rounded-b-xl"> 
+        <h2 class= "text-2xl">{{item.name}}</h2>
+        <p class= "text-gray-500">Price:{{item.price}}</p> 
+    </div>
+</div>
+    {%endfor%}
+    </div>
+</div>
+
+{% endblock %}
